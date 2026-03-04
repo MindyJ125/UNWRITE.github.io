@@ -43,6 +43,10 @@ function renderWall(text) {
         });
 
         fragment.appendChild(span);
+
+        if (saveBtn) {
+            saveBtn.style.display = 'block';
+        }
     });
 
     container.appendChild(fragment);
@@ -69,6 +73,4 @@ saveBtn.addEventListener('click', () => {
     });
 });
 
-function renderWall(text) {
-    saveBtn.style.display = 'block'; // Show the save button now that text exists
-}
+
