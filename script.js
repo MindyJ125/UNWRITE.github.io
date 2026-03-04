@@ -20,7 +20,6 @@ btn.addEventListener('click', async () => {
 
         if (!text) throw new Error("Void");
 
-        // 2. Clear overlay and prepare text
         overlay.style.display = 'none';
         renderWall(text);
 
@@ -47,4 +46,29 @@ function renderWall(text) {
     });
 
     container.appendChild(fragment);
+}
+
+const saveBtn = document.getElementById('saveBtn');
+
+saveBtn.addEventListener('click', () => {
+    const element = document.getElementById('wall-container');
+
+    // Run html2canvas
+    html2canvas(element, {
+        backgroundColor: "#050505", 
+        logging: false,
+        scale: 2 
+    }).then(canvas => {
+        const image = canvas.toDataURL("image/png");
+        
+    
+        const link = document.createElement('a');
+        link.download = `UNWRITE-${input.value}.png`;
+        link.href = image;
+        link.click();
+    });
+});
+
+function renderWall(text) {
+    saveBtn.style.display = 'block'; // Show the save button now that text exists
 }
