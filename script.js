@@ -9,7 +9,7 @@ btn.addEventListener('click', async () => {
 
     // 1. Fetch from Wikipedia
     overlay.innerHTML = "<h1>GENERATING...</h1>";
-    const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=extracts&explaintext&titles=${keyword}`;
+    const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=extracts&explaintext&redirects=1&titles=${encodeURIComponent(keyword)}`;
     
     try {
         const response = await fetch(url);
