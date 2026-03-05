@@ -2,7 +2,9 @@ const input = document.getElementById('keywordInput');
 const btn = document.getElementById('generateBtn');
 const container = document.getElementById('wall-container');
 const overlay = document.getElementById('overlay');
-const saveBtn = document.getElementById('saveBtn'); 
+const sidebar = document.getElementById('sidebar');
+const startOverBtn = document.getElementById('startOverBtn');
+
 
 btn.addEventListener('click', async () => {
     const keyword = input.value;
@@ -41,9 +43,7 @@ function renderWall(text) {
         span.className = 'word';
         span.innerText = word + ' ';
         
-        span.addEventListener('mouseover', () => {
-            span.classList.add('erased');
-        });
+        span.addEventListener('mouseover', () => { span.classList.add('erased'); });
 
         fragment.appendChild(span);
     });
@@ -51,14 +51,12 @@ function renderWall(text) {
     container.appendChild(fragment);
 
     // Show the save button ONCE at the end
-    if (saveBtn) {
-        saveBtn.style.display = 'block';
-    }
+    sidebar.style.display = 'block';
 }
 
-saveBtn.addEventListener('click', () => {
+document.getElementById('savePoemBtn').addEventListener('click', () => {
     // Temporary hide the button so it doesn't appear in its own screenshot
-    saveBtn.style.display = 'none';
+    sidebar.style.display = 'none';
 
     html2canvas(container, {
         backgroundColor: "#050505",
@@ -73,7 +71,13 @@ saveBtn.addEventListener('click', () => {
         link.click();
 
         // Bring the button back after capture
-        saveBtn.style.display = 'block';
+        sidebar.style.display = 'block';
     });
+});
+
+startOverBtn.addEventListener('click', () => {
+    container.innerHTML = '';
+    overlay.style.display = 'block';
+    sidebar.style.display = 'none';
 });
 
