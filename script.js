@@ -2,6 +2,7 @@ const input = document.getElementById('keywordInput');
 const btn = document.getElementById('generateBtn');
 const container = document.getElementById('wall-container');
 const overlay = document.getElementById('overlay');
+const saveBtn = document.getElementById('saveBtn'); 
 
 btn.addEventListener('click', async () => {
     const keyword = input.value;
@@ -29,7 +30,10 @@ btn.addEventListener('click', async () => {
 });
 
 function renderWall(text) {
-    const words = text.split(/\s+/).slice(0, 1500); // Limit to 1500 words for performance
+    // Clear previous wall for a fresh start
+    container.innerHTML = ''; 
+
+    const words = text.split(/\s+/).slice(0, 1500);
     const fragment = document.createDocumentFragment();
 
     words.forEach(word => {
@@ -37,40 +41,39 @@ function renderWall(text) {
         span.className = 'word';
         span.innerText = word + ' ';
         
-        // Interaction: Erase on hover
         span.addEventListener('mouseover', () => {
             span.classList.add('erased');
         });
 
         fragment.appendChild(span);
-
-        if (saveBtn) {
-            saveBtn.style.display = 'block';
-        }
     });
 
     container.appendChild(fragment);
+
+    // Show the save button ONCE at the end
+    if (saveBtn) {
+        saveBtn.style.display = 'block';
+    }
 }
 
-const saveBtn = document.getElementById('saveBtn');
-
 saveBtn.addEventListener('click', () => {
-    const element = document.getElementById('wall-container');
+    // Temporary hide the button so it doesn't appear in its own screenshot
+    saveBtn.style.display = 'none';
 
-    // Run html2canvas
-    html2canvas(element, {
-        backgroundColor: "#050505", 
-        logging: false,
-        scale: 2 
+    html2canvas(container, {
+        backgroundColor: "#050505",
+        scale: 3, // Boosts resolution for crisp text on mobile screens
+        useCORS: true,
+        logging: false
     }).then(canvas => {
         const image = canvas.toDataURL("image/png");
-        
-    
         const link = document.createElement('a');
-        link.download = `UNWRITE-${input.value}.png`;
+        link.download = `PROJECT-UNWRITE-${input.value || 'POEM'}.png`;
         link.href = image;
         link.click();
+
+        // Bring the button back after capture
+        saveBtn.style.display = 'block';
     });
 });
-
 

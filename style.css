@@ -42,16 +42,17 @@ body {
     display: inline-block;
 }
 
-/* The Erasure Effect */
+/*.erased class */
 .erased {
     opacity: 0;
     transform: scale(0.5) translateY(-20px);
     pointer-events: none;
+    visibility: hidden; 
 }
 
 /* The Save Button */
 #saveBtn {
-    background-color: #4CAF50; /* Green */
+    background-color: #77a779; /* Green */
     border: none;
     color: white;
     padding: 15px 32px;
