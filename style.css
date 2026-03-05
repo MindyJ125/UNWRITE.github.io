@@ -72,18 +72,17 @@ body {
     transform: scale(1.1);
 }
 
-/* Sidebar */
+/* Sidebar **/
 #sidebar {
     position: fixed;
     top: 0;
     left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
+    left: 20px; /* Adjust as needed to align with text wall */
+    transform: none; /* Remove centering */
     max-width: 900px; /* Matches #wall-container */
-    padding: 20px;    /* Matches #wall-container padding */
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
     box-sizing: border-box; /* Ensures padding doesn't add to width */
     z-index: 100;
 }
@@ -95,7 +94,31 @@ body {
     font-family: 'Courier Prime', Courier, monospace;
     border: none;
     cursor: pointer;
-    padding: 10px 0; /* Vertical padding 10px, Horizontal 0 */
+    padding: 10px; /* Vertical padding 10px, Horizontal 0 */
     margin-right: 15px; /* Space between buttons instead of padding */
-    text-align: left;
 }
+
+body.light-mode {
+    background-color: white;
+    color: black;
+}
+
+body.light-mode #overlay h1 {
+    color: black;
+}
+
+body.light-mode #keywordInput {
+    color: black;
+}
+
+body.light-mode #themeToggle {
+     background-color: transparent;
+    color: black;
+    font-size: 16px;
+}
+
+body.light-mode #sidebar button {
+    background-color: transparent;
+   color: black;
+}
+

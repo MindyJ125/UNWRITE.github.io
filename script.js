@@ -148,7 +148,7 @@ document.getElementById('savePoemBtn').addEventListener('click', () => {
     sidebar.style.display = 'none';
 
     html2canvas(container, {
-        backgroundColor: "#050505",
+        backgroundColor: body.classList.contains('light-mode') ? '#FFFFFF' : '#050505', //match backgroud to theme color,
         scale: 3, // Boosts resolution for crisp text on mobile screens
         useCORS: true,
         logging: false
@@ -166,5 +166,17 @@ document.getElementById('savePoemBtn').addEventListener('click', () => {
 
 startOverBtn.addEventListener('click', () => {
     location.reload();
+});
+
+const themeToggleBtn = document.getElementById('themeToggle');
+const body = document.body;
+
+themeToggleBtn.addEventListener('click', () => {
+    body.classList.toggle('light-mode');
+    if (body.classList.contains('light-mode')) {
+        themeToggleBtn.textContent = 'switch to dark mode';
+    } else {
+        themeToggleBtn.textContent = 'switch to light mode';
+    }
 });
 
