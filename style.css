@@ -48,3 +48,16 @@ body {
     transform: scale(0.5) translateY(-20px);
     pointer-events: none;
 }
+
+/* The Save Button */
+#saveBtn {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
