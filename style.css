@@ -2,17 +2,25 @@ body {
     background-color: #050505;
     color: #fff;
     margin: 0;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Courier Prime', Courier, monospace;
     overflow-x: hidden;
     cursor: crosshair;
 }
 
 #overlay {
     position: fixed;
-    top: 50%; left: 50%;
+    top: 40%; left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 10;
+}
+
+#overlay p {
+    font-family: 'Courier Prime', Courier, monospace;
+}
+
+#overlay h1 {
+    margin-bottom: 40px;
 }
 
 #keywordInput {
@@ -20,55 +28,74 @@ body {
     border: none;
     border-bottom: 2px solid #444;
     color: white;
-    font-size: 24px;
+    font-size: 16px;
     padding: 10px;
     outline: none;
     text-align: center;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 #wall-container {
     padding: 20px;
-    display: flex;
+    display: block;
+    margin-top: 30px;
     flex-wrap: wrap;
     gap: 5px;
-    line-height: 1.2;
+    line-height: 1.1;
     font-size: 13px;
     opacity: 0.7;
     user-select: none; /* stops highlighting while erasing */
+    text-align: justify;
+    max-width: 900px;
+    margin: 40px auto;
 }
 
 .word {
-    transition: all 0.8s ease-out;
     display: inline-block;
+    margin-right: 6px; 
+    margin-bottom: 4px;
+    transition: opacity 0.6s ease, transform 0.8s ease;
+    cursor: crosshair;
 }
+
 
 /*.erased class */
 .erased {
     opacity: 0;
-    transform: scale(0.5) translateY(-20px);
-    pointer-events: none;
+    transform: scale(0.3) rotate(5deg);
+    pointer-events: none; 
     visibility: hidden; 
+}
+
+.word:hover {
+    color: rgb(91, 229, 254);
+    transform: scale(1.1);
 }
 
 /* Sidebar */
 #sidebar {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 200px;
-    height: 100%;
-    background-color: #111;
-    padding: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 900px; /* Matches #wall-container */
+    padding: 20px;    /* Matches #wall-container padding */
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    gap: 20px;
+    box-sizing: border-box; /* Ensures padding doesn't add to width */
+    z-index: 100;
 }
 
 #sidebar button {
-    padding: 10px 15px;
-    background-color: #555;
+    background-color: transparent;
     color: white;
+    font-size: 16px;
+    font-family: 'Courier Prime', Courier, monospace;
     border: none;
     cursor: pointer;
+    padding: 10px 0; /* Vertical padding 10px, Horizontal 0 */
+    margin-right: 15px; /* Space between buttons instead of padding */
+    text-align: left;
 }
-
