@@ -1,22 +1,27 @@
+.give-you-glory-regular {
+    font-family: "Give You Glory", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+
 body {
-    background-color: #050505;
-    color: #fff;
+    background-color: #090909; 
+    text-align: center;
+    color: white; 
+    font-family: 'Give You GLory', cursive;
+    padding: 30px;
     margin: 0;
-    font-family: 'Courier Prime', Courier, monospace;
-    overflow-x: hidden;
-    cursor: crosshair;
 }
 
 #overlay {
-    position: fixed;
-    top: 40%; left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 10;
+    position: absolute;
+    top: 40%;
+    left: 50%; transform: translate(-50%, -50%);
 }
 
 #overlay p {
-    font-family: 'Courier Prime', Courier, monospace;
+    font-family: 'Courier Prime', 'Courier', monospace;
 }
 
 #overlay h1 {
@@ -25,15 +30,15 @@ body {
 
 #keywordInput {
     background: transparent;
-    border: none;
-    border-bottom: 2px solid #444;
-    color: white;
+    border: none; 
+    color: rgb(91, 229, 254);
     font-size: 16px;
-    padding: 10px;
-    outline: none;
+    font-family: 'Courier Prime', 'Courier', monospace;
     text-align: center;
-    font-family: 'Courier New', Courier, monospace;
+    padding-left: 10px;
+    outline: none;
 }
+
 
 #wall-container {
     padding: 20px;
@@ -44,7 +49,7 @@ body {
     line-height: 1.1;
     font-size: 13px;
     opacity: 0.7;
-    user-select: none; /* stops highlighting while erasing */
+    font-family: 'Courier Prime', 'Courier', monospace;
     text-align: justify;
     max-width: 900px;
     margin: 40px auto;
