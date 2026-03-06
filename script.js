@@ -77,9 +77,9 @@ input.addEventListener('keydown', async (event) => {
             const totalFragments = 100; 
 
             // 2. Calculate slice counts (30% Wiki, 50% Books, 20% Poetry)
-            const countWiki = Math.floor(totalFragments * 0.30);   // 15
-            const countBooks = Math.floor(totalFragments * 0.50);  // 25
-            const countPoetry = Math.floor(totalFragments * 0.20); // 10
+            const countWiki = Math.floor(totalFragments * 0.15);   // 15
+            const countBooks = Math.floor(totalFragments * 0.45);  // 25
+            const countPoetry = Math.floor(totalFragments * 0.30); // 10
 
             // 3. Slice each source array
             const finalFragments = [
