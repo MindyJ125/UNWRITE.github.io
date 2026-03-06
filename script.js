@@ -74,16 +74,28 @@ input.addEventListener('keydown', async (event) => {
 
             // --- THE CHAOS MIXER ---
             // Combine all sources into one massive pool
-            let allFragments = [...wikiScraps, ...poetryScraps, ...bookScraps];
+            const totalFragments = 50; 
 
-            // Fisher-Yates Shuffle algorithm to make it truly random
-            for (let i = allFragments.length - 1; i > 0; i--) {
+            // 2. Calculate slice counts (30% Wiki, 50% Books, 20% Poetry)
+            const countWiki = Math.floor(totalFragments * 0.30);   // 15
+            const countBooks = Math.floor(totalFragments * 0.50);  // 25
+            const countPoetry = Math.floor(totalFragments * 0.20); // 10
+
+            // 3. Slice each source array
+            const finalFragments = [
+                ...wikiScraps.slice(0, countWiki),
+                ...bookScraps.slice(0, countBooks),
+                ...poetryScraps.slice(0, countPoetry)
+            ];
+
+            // 4. Shuffle the combined array
+            for (let i = finalFragments.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [allFragments[i], allFragments[j]] = [allFragments[j], allFragments[i]];
+                [finalFragments[i], finalFragments[j]] = [finalFragments[j], finalFragments[i]];
             }
 
-            // Join a limited number of fragments so it's not too long
-            const finalWallText = allFragments.slice(0, 50).join(' ');
+            const finalWallText = finalFragments.join(' ');
+;
 
             overlay.style.display = 'none';
             renderWall(finalWallText);
