@@ -31,7 +31,7 @@ body {
 #keywordInput {
     background: transparent;
     border: none; 
-    color: rgb(91, 229, 254);
+    color: rgb(0, 255, 0);
     font-size: 16px;
     font-family: 'Courier Prime', 'Courier', monospace;
     text-align: center;
@@ -73,7 +73,7 @@ body {
 }
 
 .word:hover {
-    color: rgb(91, 229, 254);
+    color: rgb(0, 255, 0);
     transform: scale(1.1);
 }
 
