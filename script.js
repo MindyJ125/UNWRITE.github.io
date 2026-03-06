@@ -3,6 +3,8 @@ const container = document.getElementById('wall-container');
 const overlay = document.getElementById('overlay');
 const sidebar = document.getElementById('sidebar');
 const startOverBtn = document.getElementById('startOverBtn');
+const instruction = document.getElementById('instruction');
+
 
 /*
 btn.addEventListener('click', async () => {
@@ -130,6 +132,7 @@ function renderWall(text) {
     container.appendChild(fragment);
 
     // Show the save button ONCE at the end
+    instruction.style.display = 'block';
     sidebar.style.display = 'block';
 
     // Enable carving when mouse is down
@@ -138,7 +141,7 @@ function renderWall(text) {
     });
 
     // Disable carving when mouse is up
-   window.addEventListener('mouseup', () => {
+    window.addEventListener('mouseup', () => {
         container.classList.remove('carving');
     });
 }
@@ -171,12 +174,26 @@ startOverBtn.addEventListener('click', () => {
 const themeToggleBtn = document.getElementById('themeToggle');
 const body = document.body;
 
+window.onload = () => {
+    instruction.style.display = 'none';
+    // If no theme is saved, default to light
+    const savedTheme = localStorage.getItem('theme') || 'light-mode';
+    body.classList.add(savedTheme);
+    updateButtonText();
+};
+
+function updateButtonText() {
+    themeToggleBtn.textContent = body.classList.contains('light-mode') 
+        ? 'switch to dark mode' 
+        : 'switch to light mode';
+}
+
 themeToggleBtn.addEventListener('click', () => {
     body.classList.toggle('light-mode');
-    if (body.classList.contains('light-mode')) {
-        themeToggleBtn.textContent = 'switch to dark mode';
-    } else {
-        themeToggleBtn.textContent = 'switch to light mode';
-    }
+    
+    // Save preference
+    const currentTheme = body.classList.contains('light-mode') ? 'light-mode' : 'dark-mode';
+    localStorage.setItem('theme', currentTheme);
+    
+    updateButtonText();
 });
-
