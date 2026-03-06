@@ -74,7 +74,7 @@ input.addEventListener('keydown', async (event) => {
 
             // --- THE CHAOS MIXER ---
             // Combine all sources into one massive pool
-            const totalFragments = 50; 
+            const totalFragments = 100; 
 
             // 2. Calculate slice counts (30% Wiki, 50% Books, 20% Poetry)
             const countWiki = Math.floor(totalFragments * 0.30);   // 15
